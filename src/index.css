@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(
+    135deg,
+    #ecfdf5 0%,
+    #f0fdf4 25%,
+    #ffffff 50%,
+    #f0fdf4 75%,
+    #ecfdf5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom Utilities */
+.gold {
+  color: #d4af37;
+  text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37 0%, #f7ef8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.emerald-dark {
+  color: #065f46;
+}
+
+.emerald-gradient {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d4af37 0%, #065f46 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #b8941f 0%, #054c35 100%);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom shadow utilities */
+.shadow-gold {
+  box-shadow: 0 4px 14px 0 rgba(212, 175, 55, 0.2);
+}
+
+.shadow-emerald {
+  box-shadow: 0 4px 14px 0 rgba(6, 95, 70, 0.2);
+}
+
+/* Loading animation */
+@keyframes pulse-gold {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+  }
+}
