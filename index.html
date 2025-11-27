@@ -1,13 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aravizo - تعلم العربية مع زيزو الصقر</title>
+    
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    
+    <!-- SEO Meta -->
+    <title>Aravizo - تعلم العربية مع زيزو الصقر الذهبي 🦅</title>
+    <meta name="description" content="تعلم العربية بسهولة مع زيزو الصقر الذهبي - دروس تفاعلية، تمارين، نطق صوتي، ومتابعة تقدم. ابدأ مجاناً الآن!" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Aravizo - تعلم العربية مع زيزو الصقر الذهبي" />
+    <meta property="og:description" content="منصة تفاعلية لتعليم العربية بطرق ممتعة وسهلة. دروس مجانية، تمارين تفاعلية، ونطق صوتي دقيق." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    
+    <!-- Colors -->
+    <meta name="theme-color" content="#047857" />
+    
+    <!-- Font Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Performance -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Aravizo",
+      "description": "منصة تعليم العربية التفاعلية مع زيزو الصقر الذهبي",
+      "url": "https://aravizo.com",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Loading Style -->
+    <style>
+      #loading-fallback {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .loading-spinner {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: bounce 1s infinite;
+      }
+      .loading-text {
+        font-size: 1.5rem;
+        color: #065f46;
+        font-weight: bold;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+    </style>
   </head>
-  <body>
+
+  <body class="bg-emerald-50">
+    <!-- Loading Fallback -->
+    <div id="loading-fallback">
+      <div class="loading-spinner">🦅</div>
+      <div class="loading-text">جاري تحميل Aravizo...</div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Loading Script -->
+    <script>
+      // Hide loading when app is ready
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const fallback = document.getElementById('loading-fallback');
+          if (fallback) {
+            fallback.style.display = 'none';
+          }
+        }, 1000);
+      });
+
+      // Show loading if app takes too long
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        const fallback = document.getElementById('loading-fallback');
+        if (root && root.innerHTML === '' && fallback) {
+          fallback.style.display = 'flex';
+        }
+      }, 3000);
+    </script>
   </body>
 </html>
