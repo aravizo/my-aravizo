@@ -1,0 +1,157 @@
+{
+  "levels": [
+    {
+      "id": "beginner",
+      "name": "المستوى المبتدئ",
+      "description": "ابدأ رحلتك في تعلم العربية بالمفردات الأساسية والجمل البسيطة",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "مرحبا! التحيات والتعارف",
+          "level": "مبتدئ",
+          "duration": "15 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "مرحبا", "translation": "Hello", "pronunciation": "marhaba"},
+            {"arabic": "صباح الخير", "translation": "Good morning", "pronunciation": "sabah al-khayr"},
+            {"arabic": "مساء الخير", "translation": "Good evening", "pronunciation": "masa' al-khayr"},
+            {"arabic": "كيف حالك؟", "translation": "How are you?", "pronunciation": "kayfa haluk?"},
+            {"arabic": "أنا بخير، شكراً", "translation": "I'm fine, thanks", "pronunciation": "ana bikhayr, shukran"},
+            {"arabic": "مع السلامة", "translation": "Goodbye", "pronunciation": "ma'a as-salamah"}
+          ],
+          "exercises": [
+            {
+              "type": "multiple_choice",
+              "question": "ما معنى 'مرحبا'؟",
+              "options": ["Hello", "Goodbye", "Thank you", "Please"],
+              "correct_answer": 0
+            },
+            {
+              "type": "translation",
+              "question": "Translate: Good morning",
+              "answer": "صباح الخير"
+            },
+            {
+              "type": "matching",
+              "pairs": [
+                {"arabic": "كيف حالك؟", "translation": "How are you?"},
+                {"arabic": "مع السلامة", "translation": "Goodbye"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "من أين أنت؟ - التعريف بالنفس",
+          "level": "مبتدئ",
+          "duration": "20 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "أنا من ...", "translation": "I am from ...", "pronunciation": "ana min ..."},
+            {"arabic": "وأنت؟", "translation": "And you?", "pronunciation": "wa anta?"},
+            {"arabic": "اسمي ...", "translation": "My name is ...", "pronunciation": "ismi ..."},
+            {"arabic": "تشرفنا", "translation": "Nice to meet you", "pronunciation": "tasharrafna"},
+            {"arabic": "أنا من مصر", "translation": "I am from Egypt", "pronunciation": "ana min misr"},
+            {"arabic": "أنا من ألمانيا", "translation": "I am from Germany", "pronunciation": "ana min almania"}
+          ],
+          "exercises": [
+            {
+              "type": "fill_blank",
+              "question": "أنا ______ مصر",
+              "answer": "من"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "الأرقام من ١ إلى ١٠",
+          "level": "مبتدئ",
+          "duration": "25 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "واحد", "translation": "1", "pronunciation": "wahid"},
+            {"arabic": "اثنان", "translation": "2", "pronunciation": "ithnan"},
+            {"arabic": "ثلاثة", "translation": "3", "pronunciation": "thalatha"},
+            {"arabic": "أربعة", "translation": "4", "pronunciation": "arba'a"},
+            {"arabic": "خمسة", "translation": "5", "pronunciation": "khamsa"},
+            {"arabic": "ستة", "translation": "6", "pronunciation": "sitta"},
+            {"arabic": "سبعة", "translation": "7", "pronunciation": "sab'a"},
+            {"arabic": "ثمانية", "translation": "8", "pronunciation": "thamania"},
+            {"arabic": "تسعة", "translation": "9", "pronunciation": "tis'a"},
+            {"arabic": "عشرة", "translation": "10", "pronunciation": "ashara"}
+          ],
+          "exercises": [
+            {
+              "type": "multiple_choice",
+              "question": "ما هو الرقم 'ثمانية'؟",
+              "options": ["5", "8", "10", "3"],
+              "correct_answer": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intermediate",
+      "name": "المستوى المتوسط",
+      "description": "تطوير مهارات المحادثة وفهم الجمل الأكثر تعقيداً",
+      "lessons": [
+        {
+          "id": 4,
+          "title": "أفراد العائلة",
+          "level": "متوسط",
+          "duration": "20 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "أب", "translation": "Father", "pronunciation": "ab"},
+            {"arabic": "أم", "translation": "Mother", "pronunciation": "umm"},
+            {"arabic": "أخ", "translation": "Brother", "pronunciation": "akh"},
+            {"arabic": "أخت", "translation": "Sister", "pronunciation": "ukht"},
+            {"arabic": "جد", "translation": "Grandfather", "pronunciation": "jadd"},
+            {"arabic": "جدة", "translation": "Grandmother", "pronunciation": "jaddah"}
+          ],
+          "exercises": []
+        },
+        {
+          "id": 5,
+          "title": "الألوان والأشكال",
+          "level": "متوسط",
+          "duration": "15 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "أحمر", "translation": "Red", "pronunciation": "ahmar"},
+            {"arabic": "أزرق", "translation": "Blue", "pronunciation": "azraq"},
+            {"arabic": "أخضر", "translation": "Green", "pronunciation": "akhdar"},
+            {"arabic": "أصفر", "translation": "Yellow", "pronunciation": "asfar"},
+            {"arabic": "أسود", "translation": "Black", "pronunciation": "aswad"},
+            {"arabic": "أبيض", "translation": "White", "pronunciation": "abyad"}
+          ],
+          "exercises": []
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "name": "المستوى المتقدم",
+      "description": "إتقان المحادثة اليومية وفهم النصوص المعقدة",
+      "lessons": [
+        {
+          "id": 6,
+          "title": "حوارات يومية متقدمة",
+          "level": "متقدم",
+          "duration": "30 دقيقة",
+          "completed": false,
+          "words": [
+            {"arabic": "هل تمانع إذا...؟", "translation": "Do you mind if...?", "pronunciation": "hal tumani'u idha...?"},
+            {"arabic": "بالطبع لا", "translation": "Of course not", "pronunciation": "bit-tabi' la"},
+            {"arabic": "أود أن أسأل عن", "translation": "I would like to ask about", "pronunciation": "awwidu an as'ala 'an"},
+            {"arabic": "هل يمكنك مساعدتي؟", "translation": "Can you help me?", "pronunciation": "hal yumkinuka musa'adati?"}
+          ],
+          "exercises": []
+        }
+      ]
+    }
+  ],
+  "total_lessons": 25,
+  "version": "1.0.0"
+}
