@@ -1,12 +1,36 @@
 {
-  "name": "my-aravizo",
+  "name": "aravizo",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
+  "description": "منصة تعليم العربية التفاعلية مع زيزو الصقر الذهبي - دروس مجانية، تمارين تفاعلية، ونطق صوتي",
+  "keywords": [
+    "عربية",
+    "تعليم",
+    "لغة",
+    "تفاعلي",
+    "دروس",
+    "تمارين",
+    "نطق",
+    "تعلم-اللغة"
+  ],
+  "author": {
+    "name": "Aravizo Team",
+    "email": "hello@aravizo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aravi/aravizo.git"
+  },
+  "homepage": "https://aravizo.com",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host",
+    "preview:prod": "vite preview --host --port 4173",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "deploy": "npm run build && echo 'جاهز للنشر!'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.0",
@@ -15,8 +39,32 @@
     "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "vite": "^5.0.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
