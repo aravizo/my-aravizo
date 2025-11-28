@@ -15,7 +15,7 @@ export default defineConfig({
   // إعدادات البناء للإنتاج
   build: {
     target: 'esnext', // أحدث معايير JavaScript
-    minify: 'terser', // ضغط الكود
+    minify: 'esbuild', // استخدم esbuild بدل terser
     sourcemap: false, // إخفاء ملفات المصدر في الإنتاج
     
     // تحسين حجم الحزمة
