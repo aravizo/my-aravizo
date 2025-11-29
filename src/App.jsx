@@ -1,214 +1,0 @@
-import { useState, useEffect } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)
-
-function App() {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [currentView, setCurrentView] = useState('home') // 'home', 'lessons', 'profile'
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const { data } = await supabase.auth.getUser()
-        setUser(data?.user || null)
-      } catch (error) {
-        console.error('Error fetching user:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    getUser()
-  }, [])
-
-  const handleAuth = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin
-        }
-      })
-      if (error) throw error
-    } catch (error) {
-      console.error('Authentication error:', error)
-      alert('حدث خطأ في التسجيل، حاول مرة أخرى')
-    }
-  }
-
-  const handleLogout = async () => {
-    try {
-      const { error } = await supabase.auth.signOut()
-      if (error) throw error
-      setUser(null)
-      setCurrentView('home')
-    } catch (error) {
-      console.error('Logout error:', error)
-    }
-  }
-
-  // بيانات الدروس الافتراضية
-  const lessons = [
-    { id: 1, title: 'الحروف العربية', level: 'مبتدئ', completed: false },
-    { id: 2, title: 'الأعداد من ١ إلى ١٠', level: 'مبتدئ', completed: false },
-    { id: 3, title: 'التحيات والتعارف', level: 'مبتدئ', completed: false },
-    { id: 4, title: 'أفراد العائلة', level: 'متوسط', completed: false },
-    { id: 5, title: 'الألوان والأشكال', level: 'متوسط', completed: false }
-  ]
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4 animate-bounce">🦅</div>
-          <p className="text-2xl text-emerald-700">جاري التحميل...</p>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-white text-gray-800">
-      {/* الهيدر */}
-      <header className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white p-6 shadow-lg">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-              <span>Aravizo</span>
-              <span className="text-4xl md:text-5xl">🦅</span>
-            </h1>
-            
-            {user && (
-              <div className="flex items-center gap-4">
-                <span className="text-lg">مرحباً، {user.email?.split('@')[0]}</span>
-                <button 
-                  onClick={handleLogout}
-                  className="bg-white text-emerald-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  تسجيل الخروج
-                </button>
-              </div>
-            )}
-          </div>
-          <p className="text-lg md:text-xl mt-3 text-center opacity-90">
-            تعلم العربية مع زيزو الصقر الذهبي
-          </p>
-        </div>
-      </header>
-
-      {/* المحتوى الرئيسي */}
-      <main className="max-w-6xl mx-auto p-6">
-        {currentView === 'home' && (
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-emerald-800 mb-8">
-              {user ? `أهلاً وسهلاً! 🎉 جاهز للتعلم؟` : 'ابدأ رحلتك في تعلم العربية'}
-            </h2>
-
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-emerald-100 max-w-2xl mx-auto">
-              {user ? (
-                <div className="space-y-6">
-                  <p className="text-xl text-gray-700">
-                    لديك <span className="font-bold text-emerald-600">{lessons.length}</span> درس متاح
-                  </p>
-                  <button 
-                    onClick={() => setCurrentView('lessons')}
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-xl md:text-2xl font-bold py-4 px-12 rounded-xl transition-all transform hover:scale-105 shadow-lg w-full"
-                  >
-                    عرض الدروس 🚀
-                  </button>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                    <div className="bg-emerald-50 p-4 rounded-lg">
-                      <div className="text-2xl">📚</div>
-                      <p className="font-semibold">دروس تفاعلية</p>
-                    </div>
-                    <div className="bg-emerald-50 p-4 rounded-lg">
-                      <div className="text-2xl">🎯</div>
-                      <p className="font-semibold">تمارين عملية</p>
-                    </div>
-                    <div className="bg-emerald-50 p-4 rounded-lg">
-                      <div className="text-2xl">🏆</div>
-                      <p className="font-semibold">نظام تحفيز</p>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  <div className="text-lg md:text-xl text-gray-700 space-y-3">
-                    <p>✨ 25 درس مجاني بالكامل</p>
-                    <p>🎯 تمارين تفاعلية ممتعة</p>
-                    <p>🔊 نطق صوتي دقيق</p>
-                    <p>📊 متابعة تقدمك خطوة بخطوة</p>
-                  </div>
-                  <button 
-                    onClick={handleAuth}
-                    className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xl md:text-2xl font-bold py-4 px-12 rounded-xl transition-all transform hover:scale-105 shadow-lg w-full"
-                  >
-                    سجل مجاناً الآن 🎁
-                  </button>
-                  <p className="text-gray-600 text-sm">
-                    التسجيل يستغرق ثوانٍ فقط
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* رسالة تحفيزية */}
-            <div className="mt-12 text-2xl md:text-3xl font-bold text-emerald-700">
-              <div className="flex items-center justify-center gap-4 flex-wrap">
-                <span>🦅</span>
-                زيزو الصقر الذهبي هيطير معاك لتحقيق أهدافك!
-                <span>🦅</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {currentView === 'lessons' && user && (
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-emerald-800">دروسك</h2>
-              <button 
-                onClick={() => setCurrentView('home')}
-                className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors"
-              >
-                الرجوع للرئيسية
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {lessons.map(lesson => (
-                <div key={lesson.id} className="bg-white rounded-xl shadow-lg p-6 border border-emerald-100 hover:shadow-xl transition-shadow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-gray-800">{lesson.title}</h3>
-                    <span className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm">
-                      {lesson.level}
-                    </span>
-                  </div>
-                  <button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full py-3 rounded-lg font-semibold transition-colors">
-                    ابدأ الدرس →
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </main>
-
-      {/* الفوتر */}
-      <footer className="bg-emerald-800 text-white text-center py-6 mt-12">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-lg">Aravizo - صنع بكل الحب لتعليم العربية ❤️</p>
-          <p className="mt-2 opacity-75">© {new Date().getFullYear()} جميع الحقوق محفوظة</p>
-        </div>
-      </footer>
-    </div>
-  )
-}
-
-export default App
-
-  
